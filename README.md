@@ -1,4 +1,4 @@
-# EC2 DEMO BY PAUL PRENDERGAST
+# Angular 2 Demo
 
 >Warning: Make sure you're using the latest version of Node.js and NPM
 
