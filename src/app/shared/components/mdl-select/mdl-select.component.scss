@@ -1,0 +1,19 @@
+.show {
+  display: block !important;
+}
+
+.mdlext-menu {
+  z-index: 100;
+}
+
+.mdlext-menu.is-upgraded {
+  outline: none;
+}
+
+.mdlext-menu__item[aria-selected=true] {
+  background-color: rgb(238,238,238);
+}
+
+.mdlext-menu__item[aria-selected='true']::before {
+  content: none;
+}

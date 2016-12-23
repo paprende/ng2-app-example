@@ -1,0 +1,15 @@
+.sparkline {
+  height: 20px;
+
+  .path {
+    stroke: rgb(66,165,245);
+    stroke-width: 2px;
+    fill: none;
+  }
+
+  .circle {
+    fill: rgb(255,64,129);
+    stroke: white;
+    stroke-width: .75;
+  }
+}

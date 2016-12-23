@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+.pie-chart {
+  padding: 24px;
+}
+
+.pie-chart__category-icon {
+  display: block;
+  border: 2px solid;
+  border-radius: 20px;
+  height: 20px;
+  width: 20px;
+}
+
+.mdl-data-table__cell--type {
+  text-transform: capitalize;
+}

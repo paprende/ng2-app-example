@@ -1,0 +1,20 @@
+.mdl-snackbar {
+  top: 100px;
+  bottom: initial;
+  z-index: 2;
+
+  &--active {
+    transform: translate(-50%, 0) !important;
+  }
+
+  .mdl-snackbar__text,
+  .mdl-snackbar__action {
+    font-weight: 800;
+  }
+}
+
+@media (min-width: 480px) {
+  .mdl-snackbar {
+    transform: translate(-50%, -180px);
+  }
+}

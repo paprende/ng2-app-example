@@ -1,0 +1,18 @@
+.line-chart {
+  height: 100%;
+  width: 100%;
+
+  path {
+    stroke: rgb(66,165,245);
+    stroke-width: 2px;
+    fill: none;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+  }
+}

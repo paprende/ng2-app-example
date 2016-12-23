@@ -1,0 +1,6 @@
+<dialog [style.width]="'600px'" #dialog class="mdl-dialog">
+  <splLoadingOverlay [active]="isLoading" [style]="'fade'"></splLoadingOverlay>
+  <ng-content select=".mdl-dialog__title"></ng-content>
+  <ng-content select=".mdl-dialog__content"></ng-content>
+  <ng-content select=".mdl-dialog__actions"></ng-content>
+</dialog>

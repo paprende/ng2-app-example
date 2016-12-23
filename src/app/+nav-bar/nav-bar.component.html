@@ -1,0 +1,17 @@
+<header class="mdl-layout__header mdl-color--black mdl-color-text--grey-100" role="navigation">
+  <div class="mdl-layout__header-row">
+    <span class="mdl-layout-title">
+      <span>DEMO</span>
+    </span>
+    <div class="mdl-layout-spacer"></div>
+    <!-- Right aligned menu below button -->
+    <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+      <i class="material-icons">more_vert</i>
+    </button>
+
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+      <li class="mdl-menu__item">Preferences</li>
+      <li (click)="signOut()" class="mdl-menu__item">Sign Out</li>
+    </ul>
+  </div>
+</header>

@@ -1,0 +1,96 @@
+<div class="dashboard">
+
+  <div class="mdl-grid">
+    <div class="mdl-cell--12-col">
+      <h3>My Instances</h3>
+    </div>
+  </div>
+
+  <div class="mdl-grid no-padding">
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+      <div class="mdl-grid no-padding fullwidth">
+        <div class="mdl-cell mdl-cell--8-col">
+          <cs-line-chart [data]="$state.traffic"></cs-line-chart>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <cs-pie-chart [data]="$state.categories"></cs-pie-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div mdl class="mdl-grid no-padding">
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+
+      <form [formGroup]="form" class="mdl-card__actions mdl-card__actions--data-table-search">
+        <label class="mdl-button mdl-js-button mdl-button--icon" for="serviceListSearch">
+          <i class="material-icons md-24">search</i>
+        </label>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input type="text" id="serviceListSearch" class="mdl-textfield__input" value="" [formControl]="form.controls['search']">
+          <label class="mdl-textfield__label" for="serviceListSearch">
+            Search Name, Type, State, Region and IP
+          </label>
+        </div>
+      </form>
+
+      <cs-pagination [data]="$state.instances | csSearchFilterPipe:filterArgs" (onPageChanged)="onPageChanged($event)">
+        <span style="margin-left: 14px; margin-right: auto;">
+          <cs-button id="addInstanceButton" (click)="onShowCreateInstance()">Add Instance</cs-button>
+          <cs-icon-button id="startAllInstancesButton" [type]="'power_settings_new'" [disabled]="!$state.isSomeSelected || $state.isAllRunning" (click)="onStartAllInstances()"></cs-icon-button>
+          <cs-icon-button id="stopAllInstancesButton" [type]="'stop'" [disabled]="!$state.isSomeSelected || $state.isAllRunning" (click)="onStopAllInstances()"></cs-icon-button>
+          <cs-icon-button id="deleteInstancesButton" [type]="'highlight_off'" [disabled]="!$state.isSomeSelected" (click)="onShowDeleteMultipleInstances()"></cs-icon-button>
+        </span>
+      </cs-pagination>
+
+      <table class="mdl-data-table mdl-data-table--borderless fullwidth"  >
+        <thead>
+          <tr>
+            <th><cs-checkbox [value]="$state.isAllSelected" (onChanged)="onToggleSelectAll($event)"></cs-checkbox></th>
+            <th class="mdl-data-table__cell--non-numeric">State</th>
+            <th class="mdl-data-table__cell--non-numeric">Name</th>
+            <th class="mdl-data-table__cell--non-numeric">Traffic</th>
+            <th class="mdl-data-table__cell--non-numeric">Type</th>
+            <th class="mdl-data-table__cell--non-numeric">Region</th>
+            <th class="mdl-data-table__cell--non-numeric">Public IP</th>
+            <th class="mdl-data-table__cell--non-numeric">Private IP</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <template ngFor let-instance [ngForOf]="page">
+            <tr class="clickable">
+              <td class="mdl-data-table__cell--state mdl-data-table__cell--non-numeric">
+                <cs-checkbox [value]="instance.selected" (onChanged)="onToggleSelect(instance)"></cs-checkbox>
+              </td>
+              <td class="mdl-data-table__cell--state mdl-data-table__cell--non-numeric">
+                <i class="dashboard__status-icon" [ngClass]="getStateClass(instance.state)"></i>
+              </td>
+              <td class="mdl-data-table__cell--name mdl-data-table__cell--non-numeric">{{ instance.name }}</td>
+              <td class="mdl-data-table__cell--sparkline mdl-data-table__cell--non-numeric">
+                <cs-sparkline [data]="instance.traffic"></cs-sparkline>
+              </td>
+              <td class="mdl-data-table__cell--type mdl-data-table__cell--non-numeric">{{ instance.type }}</td>
+              <td class="mdl-data-table__cell--region mdl-data-table__cell--non-numeric">{{ instance.region }}</td>
+              <td class="mdl-data-table__cell--public-ip mdl-data-table__cell--non-numeric">{{ instance.publicIP }}</td>
+              <td class="mdl-data-table__cell--private-ip mdl-data-table__cell--non-numeric">{{ instance.privateIP }}</td>
+              <td class="mdl-data-table__cell--actions">
+                <span style="margin-right: 8px;">
+                  <cs-icon-button class="startInstanceButton" [type]="'power_settings_new'" [disabled]="instance.state === 'starting' || instance.state === 'running'" (click)="instanceActions.startInstance(instance)"></cs-icon-button>
+                  <cs-icon-button class="stopInstanceButton" [type]="'stop'" [disabled]="instance.state === 'stopped'" (click)="instanceActions.stopInstance(instance)"></cs-icon-button>
+                  <cs-icon-button class="editInstanceButton" [type]="'mode_edit'" (click)="onShowCreateInstance(instance)"></cs-icon-button>
+                  <cs-icon-button class="deleteInstanceButton" [type]="'highlight_off'" (click)="onShowDeleteInstance(instance)"></cs-icon-button>
+                </span>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>
+
+<cs-create-instance-dialog (onInit)="onCreateInstanceInit($event)"></cs-create-instance-dialog>
+<cs-delete-instance-dialog (onInit)="onDeleteInstanceInit($event)"></cs-delete-instance-dialog>

@@ -1,0 +1,44 @@
+$mdl-dialog-show-backdrop-color    : rgba(0, 0, 0, 0.0980392);
+$mdl-dialog-hide-backdrop-color    : rgba(0, 0, 0, 0);
+$mdl-dialog-open-animation         : 0.5s 0.2s forwards;
+$mdl-dialog-backdrop-animation     : 0.2s forwards;
+
+.mdl-dialog {
+  position: absolute;
+  min-width: 600px;
+  animation: mdl-close-dialog $mdl-dialog-open-animation;
+  opacity: 0;
+
+  &::backdrop {
+    animation: mdl-backdrop-fade-out $mdl-dialog-backdrop-animation;
+  }
+  & + .backdrop {
+    animation: mdl-backdrop-fade-out $mdl-dialog-backdrop-animation;
+  }
+
+  &[open] {
+    animation: mdl-open-dialog $mdl-dialog-open-animation;
+  }
+  &[open]::backdrop {
+    animation: mdl-backdrop-fade-in $mdl-dialog-backdrop-animation;
+  }
+  &[open] + .backdrop {
+    animation: mdl-backdrop-fade-in $mdl-dialog-backdrop-animation;
+  }
+}
+
+@keyframes mdl-backdrop-fade-in {
+  to {
+    background: $mdl-dialog-show-backdrop-color;
+  }
+}
+@keyframes mdl-open-dialog {
+  to { opacity: 1; }
+}
+
+@keyframes mdl-backdrop-fade-out {
+  to { background: $mdl-dialog-hide-backdrop-color; }
+}
+@keyframes mdl-close-dialog {
+  to { opacity: 0; }
+}

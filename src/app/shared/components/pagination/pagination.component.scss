@@ -1,0 +1,17 @@
+.mdl-pagination {
+  padding: 16px 8px;
+
+  &__page-caption,
+  &__page-number {
+    display: inline-block;
+    font-size: 15px;
+    padding: 0 16px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+}

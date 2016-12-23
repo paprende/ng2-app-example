@@ -1,0 +1,22 @@
+<svg class="pie-chart" #element></svg>
+<table class="mdl-data-table mdl-data-table--borderless fullwidth">
+  <thead>
+    <tr>
+      <th></th>
+      <th class="mdl-data-table__cell--non-numeric">State</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of categories">
+      <td>
+        <div class="pie-chart__category-icon"
+             [style.background-color]="c.color"
+             [style.border-color]="colorLuminance(c.color, -0.2)">
+        </div>
+      </td>
+      <td class="mdl-data-table__cell--type mdl-data-table__cell--non-numeric">{{ c.type }}</td>
+      <td>{{ c.amount }}</td>
+    </tr>
+  </tbody>
+</table>

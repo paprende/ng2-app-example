@@ -1,0 +1,10 @@
+<cs-modal-dialog (onInit)="dialogInit($event)" (onClose)="onDialogClose($event)">
+
+  <div class="mdl-dialog__title">{{ message }}</div>
+
+  <div class="mdl-dialog__actions">
+    <button mdl #confirm id="submit" (click)="submitForm($event)" class="mdl-button mdl-button--colored mdl-js-button">Yes</button>
+    <button mdl #close class="mdl-button mdl-button--colored mdl-js-button">Nope</button>
+  </div>
+
+</cs-modal-dialog>

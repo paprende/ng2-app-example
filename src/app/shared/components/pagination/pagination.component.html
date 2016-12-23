@@ -1,0 +1,30 @@
+<div class="mdl-pagination mdl-card__actions">
+  <span class="mdl-pagination__actions">
+
+    <span style="margin-left: 14px; margin-right: auto;">
+      {{ getSelected() }} item selected
+      <ng-content></ng-content>
+    </span>
+
+    <span class="mdl-pagination__page-caption">Rows per page:</span>
+    <mdl-select [items]="pageSizeOptions" (onMenuItemSelected)="pageSizeSelected($event)"></mdl-select>
+    <span class="mdl-pagination__page-number">{{ getPageCaption() }}</span>
+
+    <button [disabled]="isFirstPage(pageNumber)" (click)="firstPage()" mdl class="mdl-button mdl-button--first-page mdl-js-ripple-effect mdl-js-button">
+      <i class="material-icons">first_page</i>
+    </button>
+
+    <button [disabled]="isFirstPage(pageNumber)" (click)="previousPage()" mdl class="mdl-button mdl-button--prev-page mdl-js-ripple-effect mdl-js-button">
+      <i class="material-icons">chevron_left</i>
+    </button>
+
+    <button [disabled]="isLastPage(pageNumber)" (click)="nextPage()" mdl class="mdl-button mdl-button--next-page mdl-js-ripple-effect mdl-js-button">
+      <i class="material-icons">chevron_right</i>
+    </button>
+
+    <button [disabled]="isLastPage(pageNumber)" (click)="lastPage()" mdl class="mdl-button mdl-button--last-page mdl-js-ripple-effect mdl-js-button">
+      <i class="material-icons">last_page</i>
+    </button>
+
+  </span>
+</div>

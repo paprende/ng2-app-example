@@ -1,0 +1,45 @@
+<cs-modal-dialog (onInit)="dialogInit($event)" (onClose)="onDialogClose($event)">
+
+  <div class="mdl-dialog__title">{{ message }}</div>
+
+  <div class="mdl-dialog__content">
+    <form [formGroup]="form" (ngSubmit)="submitForm($event, form.value)">
+      <div #nameTextField class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label fullwidth">
+        <input type="text" id="nameTextField" class="mdl-textfield__input" [formControl]="form.controls['name']">
+        <label class="mdl-textfield__label" for="nameTextField">
+          Name
+        </label>
+      </div>
+      <div #typeSelectField class="mdlext-selectfield mdlext-js-selectfield mdlext-selectfield--floating-label fullwidth">
+        <select id="typeSelectField" class="mdlext-selectfield__select" [formControl]="form.controls['type']">
+          <option *ngFor="let item of types" [value]="item.value">{{ item.value }}</option>
+        </select>
+        <label class="mdlext-selectfield__label">Type</label>
+      </div>
+      <div #regionSelectField class="mdlext-selectfield mdlext-js-selectfield mdlext-selectfield--floating-label fullwidth">
+        <select id="regionSelectField" class="mdlext-selectfield__select" [formControl]="form.controls['region']">
+          <option *ngFor="let item of regions" [value]="item.value">{{ item.value }}</option>
+        </select>
+        <label class="mdlext-selectfield__label">Region</label>
+      </div>
+      <div #textFieldPublicIP class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label fullwidth">
+        <input type="text" id="textFieldPublicIP" class="mdl-textfield__input" [formControl]="form.controls['publicIP']">
+        <label class="mdl-textfield__label" for="textFieldPublicIP">
+          Public IP
+        </label>
+      </div>
+      <div #textFieldPrivateIP class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label fullwidth">
+        <input type="text" id="textFieldPrivateIP" class="mdl-textfield__input" [formControl]="form.controls['privateIP']">
+        <label class="mdl-textfield__label" for="textFieldPrivateIP">
+          Private IP
+        </label>
+      </div>
+    </form>
+  </div>
+
+  <div class="mdl-dialog__actions">
+    <button mdl #confirm id="submit" (click)="submitForm($event)" class="mdl-button mdl-button--colored mdl-js-button">Save</button>
+    <button mdl #close class="mdl-button mdl-button--colored mdl-js-button">Cancel</button>
+  </div>
+
+</cs-modal-dialog>

@@ -1,0 +1,10 @@
+<div role="presentation">
+  <button #button (click)="toggleMenu()" class="mdl-button mdl-js-button mdlext-js-menu-button">
+    <span class="mdlext-menu-button__label">{{ caption }}</span>
+    <i [hidden]="isOpen" class="material-icons">arrow_drop_down</i>
+    <i [hidden]="!isOpen" class="material-icons">arrow_drop_up</i>
+  </button>
+  <ul #list class="mdlext-menu">
+    <li *ngFor="let item of items" [attr.data-caption]="item.caption" [attr.data-value]="item.value" class="mdlext-menu__item">{{ item.value }}</li>
+  </ul>
+</div>

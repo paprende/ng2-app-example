@@ -1,0 +1,225 @@
+/* MATERIAL DESIGN LITE OVERRIDES */
+
+$image_path: '/img' !default;
+
+@import '../../node_modules/dialog-polyfill/dialog-polyfill';
+
+// brand colors
+@import '../../node_modules/material-design-lite/src/_color-definitions';
+
+$color-primary: $palette-blue-700 !default;
+$color-primary-dark: $palette-blue-900 !default;
+$color-accent: $palette-pink-A200 !default;
+
+// data-table
+$data-table-font-size: 16px !default;
+$data-table-header-font-size: 15px !default;
+$data-table-header-sort-icon-size: 16px !default;
+
+@import '../../node_modules/material-design-lite/src/_variables';
+@import '../../node_modules/material-design-lite/src/material-design-lite';
+
+
+// Configuration and helpers
+@import '../../node_modules/mdl-ext/src/variables';
+@import '../../node_modules/mdl-ext/src/mixins';
+@import '../../node_modules/mdl-ext/src/functions';
+
+// Components
+@import '../../node_modules/mdl-ext/src/menu-button/menu-button';
+@import '../../node_modules/mdl-ext/src/selectfield/selectfield';
+
+/* FONT FACES */
+
+// roboto
+$roboto-font-path: '/fonts' !default;
+@import '../../node_modules/roboto-fontface/css/mixins';
+@import '../../node_modules/roboto-fontface/css/roboto/roboto-fontface';
+
+// font awesome
+$fa-font-path: '/fonts/FontAwesome' !default;
+@import '../../node_modules/font-awesome/scss/_variables';
+@import '../../node_modules/font-awesome/scss/font-awesome';
+
+// material design icons
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/MaterialIcons/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(/fonts/MaterialIcons/MaterialIcons-Regular.woff2) format('woff2'),
+       url(/fonts/MaterialIcons/MaterialIcons-Regular.woff) format('woff'),
+       url(/fonts/MaterialIcons/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
+
+/* BASE STYLES */
+
+* {
+ -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  color: #545454;
+  background-color: #f3f6fa;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h4, .h4, h5, .h5, h6, .h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+textarea, input {
+  outline: none;
+}
+
+main {
+  padding-top: 64px;
+}
+
+/* BUTTON */
+
+.mdl-button.mdl-button--block {
+  min-width: 100%;
+}
+
+/* TABLE */
+.mdl-data-table--borderless {
+  border: none !important;
+}
+
+.mdl-data-table__row--no-highlight {
+  background-color: transparent !important;
+}
+
+.mdl-card__actions.mdl-card__actions--data-table-search {
+  padding: 16px 32px;
+
+  .mdl-textfield {
+    width: calc(100% - 36px) !important;
+  }
+
+  .mdl-textfield.is-focused .mdl-textfield__expandable-holder,
+  .mdl-textfield.is-dirty .mdl-textfield__expandable-holder {
+    max-width: calc(100% - 36px);
+  }
+}
+
+/* GRID */
+.mdl-grid_page-header {
+  padding-bottom: 0;
+  line-height: normal;
+}
+
+.mdl-grid_page-header .mdl-cell {
+  height: 40px;
+}
+
+/* DIALOG */
+.mdl-dialog__title {
+  font-size: $card-title-font-size !important;
+}
+
+/* HELPERS */
+.no-padding {
+  padding: 0;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.center-margin {
+  margin: 0 auto;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.overflow {
+  overflow: auto;
+}
+
+.text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.strong {
+  font-weight: 500;
+}
+
+.fill {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.fullheight {
+  height: 100% !important;
+}
+
+.fullwidth {
+  width: 100% !important;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}

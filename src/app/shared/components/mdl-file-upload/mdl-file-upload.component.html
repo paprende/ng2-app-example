@@ -1,0 +1,14 @@
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--file fullwidth">
+	<input #label class="mdl-textfield__input" placeholder="Select a File" type="text" readonly/>
+	<div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+		<i class="material-icons">attach_file</i><input #fileInput (change)="onChange($event)" name="fileInput" accept=".json" type="file">
+	</div>
+</div>
+
+<div (drop)="onFileDrop($event)" (dragover)="onDragOver($event)" [hidden]="hasContent" class="file-drop-area">
+  <div class="file-drop-area__caption">DROP FILE HERE</div>
+</div>
+
+<div [hidden]="!hasContent" class="file-content">
+  <code-block [codeObservable]="fileContent$" [language]="'json'" class="fullwidth"></code-block>
+</div>
